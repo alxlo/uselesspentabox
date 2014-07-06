@@ -18,7 +18,7 @@ A defective [pentabug](https://github.com/c3d2/pentabug) PCB has been recycled f
 
 ### Hardware
 
-Nearly all the hardware I've got as a bithday present from my most valued colleagues. It comes as a laser cutted [kit]](http://www.fablabshop.de/anleitunguseless) from [Fab Lab Shop](http://www.fablabshop.de). Unfortunately the hinges were broken on arrival.
+Nearly all the hardware I've got as a bithday present from my most valued colleagues. It comes as a laser cutted [kit`with some parts](http://www.fablabshop.de/anleitunguseless) from [Fab Lab Shop](http://www.fablabshop.de). Unfortunately the hinges were broken on arrival.
 
 ![it's b0rken!](https://raw.github.com/alxlo/uselesspentabox/master/images/hinges.jpg)
 
@@ -28,22 +28,26 @@ But there is (nearly) nothing you can't fix with some good old methyl acrylate g
 
 #### Get your toolchain ready
 
-Well, it's just a plain avr gcc toolchain for hacking with atmel microcontrollers:
-'''
+Well, it's just a plain avr gcc toolchain for hacking with Atmel microcontrollers:
+
+```
 sudo apt-get install avr-libc binutils-avr gcc-avr avrdude avarice gdb-avr
-'''
+```
 
 As we always stumble about this, here is how we make the UsbTinyISP programmer available for non-root using UDEV-Rules:
 
 Create a file `/etc/udev/rules.d/41-usbtiny.rules` and add the line
-'''
+
+```
 SUBSYSTEM=="usb", ATTR{idVendor}=="1781", ATTR{idProduct}=="0c9f", GROUP="plugdev", MODE="0666"
-'''
+```
+
 Finally set permissions and restart udev
-'''
+
+```
 sudo chmod a+r /etc/udev/rules.d/41-usbtiny.rules
 sudo restart udev
-'''
+```
 
 ### Work in progress
 
